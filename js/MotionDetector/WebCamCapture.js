@@ -56,7 +56,41 @@
 			);
 		}
 
-		
+		// Captures a still image from the video.
+		function captureImage(append) {
+			var canvas = document.createElement('canvas');
+			canvas.width = width;
+			canvas.height = height;
+			canvas.getContext('2d').drawImage(webCamWindow, 0, 0, width, height);
+
+			var pngImage = canvas.toDataURL("image/png");
+
+			if(append) {
+				append.appendChild(canvas);
+			}
+
+			return canvas;
+		}
+
+		function setSize(w, h) {
+			width = w;
+			height = h;
+		}
+
+		function hasSupport(){
+			return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+				navigator.mozGetUserMedia || navigator.msGetUserMedia);
+		}
+
+		// Initialize on creation.
+		initialize(videoElement);
+
+		// Return public interface.
+		return {
+			setSize: setSize,
+			hasSupport: hasSupport,
+			captureImage: captureImage
+		};
 
 	}
 
