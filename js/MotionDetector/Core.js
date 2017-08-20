@@ -31,6 +31,16 @@
 			};
 		})();
 
+		function initialize() {
+			imageCompare = new App.ImageCompare();
+			webCam = new App.WebCamCapture(document.getElementById('webCamWindow'));
+
+			rendering = true;
+
+			main();
+		}
+
+
 
 
 	};
