@@ -31,6 +31,7 @@
 			};
 		})();
 
+
 		function initialize() {
 			imageCompare = new App.ImageCompare();
 			webCam = new App.WebCamCapture(document.getElementById('webCamWindow'));
@@ -39,6 +40,7 @@
 
 			main();
 		}
+
 
 		function render() {
 			oldImage = currentImage;
@@ -67,8 +69,19 @@
 
 		}
 
+		function main() {
+			try{
+				render();
+			} catch(e) {
+				console.log(e);
+				return;
+			}
 
+			if(rendering == true) {
+				raf(main.bind(this));
+			}
+		}
 
-
+		initialize();
 	};
 })(MotionDetector);
