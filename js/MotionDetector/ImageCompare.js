@@ -29,7 +29,7 @@
 			topLeft = [Infinity,Infinity];
 			bottomRight = [0,0];
 		}
-		
+
 		// Compares to images.
 
 		function compare(image1, image2, width, height) {
@@ -66,6 +66,24 @@
 				'bottomRight': bottomRight
 			}
 		}
+
+		function comparePixel(p1, p2) {
+			var matches = true;
+
+			for(var i = 0; i < p1.length; i++) {
+				var t1 = Math.round(p1[i]/10)*10;
+				var t2 = Math.round(p2[i]/10)*10;
+
+				if(t1 != t2) {
+					if((t1+sensitivity < t2 || t1-sensitivity > t2)) {
+						matches = false;
+					}
+				}
+			}
+
+			return matches;
+		}
+
 
 
 		// Initialize on creation.
