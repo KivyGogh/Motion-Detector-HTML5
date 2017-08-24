@@ -29,7 +29,43 @@
 			topLeft = [Infinity,Infinity];
 			bottomRight = [0,0];
 		}
+		
+		// Compares to images.
 
+		function compare(image1, image2, width, height) {
+			initialize();
+
+			if(!image1 || !image2) {
+				return;
+			}
+
+			temp1Context.clearRect(0,0,100000,100000);
+			temp1Context.clearRect(0,0,100000,100000);
+
+			temp1Context.drawImage(image1, 0, 0, width, height);
+			temp2Context.drawImage(image2, 0, 0, width, height);
+
+
+			for(var y = 0; y < height; y++) {
+				for(var x = 0; x <  width; x++) {
+					var pixel1 = temp1Context.getImageData(x,y,1,1);
+					var pixel1Data = pixel1.data;
+
+					var pixel2 = temp2Context.getImageData(x,y,1,1);
+					var pixel2Data = pixel2.data;
+
+					if(comparePixel(pixel1Data, pixel2Data) == false) {
+						setTopLeft(x,y);
+						setBottomRight(x,y);
+					}
+				}
+			}
+
+			return {
+				'topLeft': topLeft,
+				'bottomRight': bottomRight
+			}
+		}
 
 
 		// Initialize on creation.
