@@ -106,8 +106,6 @@
 			}
 		}
 
-
-
 		// Initialize on creation.
 		initialize();
 
