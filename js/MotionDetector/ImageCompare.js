@@ -84,6 +84,17 @@
 			return matches;
 		}
 
+		// Sets the top left pixel.
+
+		function setTopLeft(x,y) {
+			if(x < topLeft[0] ) {
+				topLeft[0] = x;
+			}
+			if(y < topLeft[1]) {
+				topLeft[1] = [y];
+			}
+		}
+
 
 
 		// Initialize on creation.
