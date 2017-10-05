@@ -95,6 +95,17 @@
 			}
 		}
 
+		// Sets the bottom right pixel.
+
+		function setBottomRight(x,y) {
+			if(x > bottomRight[0]) {
+				bottomRight[0] = [x];
+			}
+			if(y > bottomRight[1]) {
+				bottomRight[1] = [y];
+			}
+		}
+
 
 
 		// Initialize on creation.
